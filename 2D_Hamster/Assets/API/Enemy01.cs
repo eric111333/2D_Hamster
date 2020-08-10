@@ -8,7 +8,16 @@ public class Enemy01 : MonoBehaviour
     private SpriteRenderer sprPlayer;
     private void Move()
     {
-
+         float y = Mathf.Sin(Time.time) * Random.Range(-6,6) * Time.deltaTime;
+         transform.Translate(0, y, 0);
+         if(sprPlayer.flipX==false)
+             transform.Translate(speed * 1 * Time.deltaTime, 0, 0);
+         if (gameObject.transform.position.x >= 8)
+             sprPlayer.flipX = true;
+         if (sprPlayer.flipX == true)
+             transform.Translate(speed * -1 * Time.deltaTime, 0, 0);
+         if (gameObject.transform.position.x <= -8)
+             sprPlayer.flipX = false;
 
         /*if (gameObject.transform.position.x <= 8)
         {
